@@ -1,0 +1,7 @@
+database dbname=memvalid_ur user=postgres
+sql memvalid.sql
+
+$/list
+$/char
+$/string
+memvalid
