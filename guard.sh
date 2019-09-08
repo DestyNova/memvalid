@@ -1,4 +1,9 @@
 #!/bin/bash
+# Try to kill / build / restart the app.
+# Requires the database to exist and a file named $ENV.secret
+# (usually dev.secret) to be present in this directory, containing
+# the database password. Make sure .gitignore excludes this file
+# from being committed.
 
 set -euo pipefail
 

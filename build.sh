@@ -1,4 +1,5 @@
 #!/bin/bash
+# Build the app and put its .exe in the target directory
 
 set -euo pipefail
 
