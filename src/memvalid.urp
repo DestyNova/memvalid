@@ -1,3 +1,4 @@
+library ../lib/uru
 database dbname=memvalid_ur user=postgres
 sql memvalid.sql
 
