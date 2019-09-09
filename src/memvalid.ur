@@ -25,7 +25,7 @@ fun nextToken (txt: list char) (p: char -> bool) : (string * list char) =
         | (c::[]) => (acc ^ (String.str c), [])
         | (c::c'::cs) => if (p c)
                          then
-                           (acc, (c'::cs))
+                           (acc ^ (String.str c), (c'::cs))
                          else
                            nextToken' (acc ^ (String.str c)) (c'::cs)
   in
@@ -55,18 +55,34 @@ fun tokens (txt: list char) (p: char -> bool) : list string =
     List.rev (tokens' [] txt p)
   end
 
-fun words (txt: string) : list string =
-  tokens (explode txt) Char.isSpace
+fun nonAlpha c =
+  not (Char.isAlnum c)
 
-fun inits' (acc: list string) (xs: list string) (i: int) : list string =
+fun words (txt: string) : list string =
+  tokens (explode txt) nonAlpha
+
+fun inits' acc (xs: list string) (i: int) =
   case xs of
   | (w::ws) =>
-      let val word =
+      let
+        val wordLength = String.length w
+        val word =
                    if i = 0 || w = ""
-                   then w
-                   else (String.str (String.sub w 0))
+                   then <xml><span class="revealedWord">{[w]}</span></xml>
+                   else
+                    let val lastChar = String.sub w (wordLength - 1)
+                    in
+                      <xml><span class="hiddenWord">
+                      {[
+                        (String.str (String.sub w 0)) ^
+                          if String.length w > 1 && nonAlpha lastChar
+                          then String.str lastChar
+                          else ""
+                      ]}
+                      </span></xml>
+                    end
       in
-        inits' ((word ^ " ") :: acc) ws (i - 1)
+        inits' (word :: acc) ws (i - 1)
       end
   | [] => List.rev acc
 
@@ -121,8 +137,8 @@ fun main () =
               then
                 <xml/>
               else
-                <xml><div onclick={fn _ => set src "wtf"} style="border: 1px
-                solid black" class={quizBox}>{[concat (inits v revealIndex)]}</div></xml>
+                <xml><div style="border: 1px
+                solid black" class={quizBox}>{List.mapX (fn x => x) (inits v revealIndex)}</div></xml>
             }
           </xml>
       }/><br/>
