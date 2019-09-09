@@ -1,4 +1,4 @@
-library ../lib/uru
+library ../lib/uru3/Bootstrap
 database dbname=memvalid_ur user=postgres
 sql memvalid.sql
 
