@@ -99,7 +99,7 @@ fun main () =
 
   return <xml>
     <head>
-      <link rel="stylesheet" type="text/css" href="style.css"/>
+      <link rel="stylesheet" type="text/css" href="//localhost:8086/style.css"/>
     </head>
     <body onkeydown={fn k =>
       oldIndex <- get i;
@@ -137,8 +137,7 @@ fun main () =
               then
                 <xml/>
               else
-                <xml><div style="border: 1px
-                solid black" class={quizBox}>{List.mapX (fn x => x) (inits v revealIndex)}</div></xml>
+                <xml><div class={quizBox}>{List.mapX (fn x => x) (inits v revealIndex)}</div></xml>
             }
           </xml>
       }/><br/>

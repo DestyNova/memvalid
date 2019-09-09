@@ -1,4 +1,4 @@
-allow url style.css
+allow url //localhost:8086/style.css
 rewrite style Css/*
 database dbname=memvalid_ur user=postgres
 sql memvalid.sql

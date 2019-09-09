@@ -1,0 +1,8 @@
+.quizBox {
+  border: thin solid black;
+  background: powderblue
+}
+
+.hiddenWord { color: green }
+
+.revealedWord { color: red }
