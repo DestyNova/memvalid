@@ -1,3 +1,5 @@
+open Css
+
 (*
 This is easy in SML:
 
@@ -79,62 +81,51 @@ fun main () =
   i <- source (-1);
   edit <- source False;
 
-  Uru.run (
-    JQuery.add (
-      Bootstrap.add (
+  return <xml>
+    <head>
+      <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body onkeydown={fn k =>
+      oldIndex <- get i;
+      editing <- get edit;
 
-        Uru.withHeader (
+      let val newIndex =
+        case (editing, k.KeyCode) of
+          | (False, 37) => oldIndex - 1
+          | (False, 39) => oldIndex + 1
+          | _ => oldIndex
+      in
+        set i newIndex
+      end
+    }>
+      <dyn signal={
+        editMode <- signal edit;
+
+        return <xml>
+          {if editMode
+            then
+              <xml><ctextarea source={src}/></xml>
+          else
+            <xml/>}
+        </xml>
+      }/>
+
+      <dyn signal={
+        editMode <- signal edit;
+        v <- signal src;
+        revealIndex <- signal i;
+
+        return
           <xml>
-            <title>Memvalid</title>
-          </xml>) (
-
-        Uru.withBody (fn _ =>
-          return <xml>
-            <body onkeydown={fn k =>
-              oldIndex <- get i;
-              editing <- get edit;
-
-              let val newIndex =
-                case (editing, k.KeyCode) of
-                  | (False, 37) => oldIndex - 1
-                  | (False, 39) => oldIndex + 1
-                  | _ => oldIndex
-              in
-                set i newIndex
-              end
-            }>
-              <dyn signal={
-                editMode <- signal edit;
-
-                return <xml>
-                  {if editMode
-                    then
-                      <xml><ctextarea source={src}/></xml>
-                  else
-                    <xml/>}
-                </xml>
-              }/>
-
-              <dyn signal={
-                editMode <- signal edit;
-                v <- signal src;
-                revealIndex <- signal i;
-
-                return
-                  <xml>
-                    {if editMode
-                      then
-                        <xml/>
-                      else
-                        <xml><div onclick={fn _ => set src "wtf"} class={well}>{[concat (inits v revealIndex)]}</div></xml>
-                    }
-                  </xml>
-              }/><br/>
-              <ccheckbox source={edit}/> Edit
-            </body>
+            {if editMode
+              then
+                <xml/>
+              else
+                <xml><div onclick={fn _ => set src "wtf"} style="border: 1px
+                solid black" class={quizBox}>{[concat (inits v revealIndex)]}</div></xml>
+            }
           </xml>
-        )
-      )
-    )
-  )
-)
+      }/><br/>
+      <ccheckbox source={edit}/> Edit
+    </body>
+  </xml>

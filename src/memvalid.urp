@@ -1,8 +1,10 @@
-library ../lib/uru3/Bootstrap
+allow url style.css
+rewrite style Css/*
 database dbname=memvalid_ur user=postgres
 sql memvalid.sql
 
 $/list
 $/char
 $/string
+css
 memvalid
