@@ -103,6 +103,8 @@ fun main () =
     </head>
     <body onkeydown={fn k =>
       oldIndex <- get i;
+      v <- get src;
+      revealIndex <- get i;
       editing <- get edit;
 
       let val newIndex =
@@ -111,7 +113,14 @@ fun main () =
           | (False, 39) => oldIndex + 1
           | _ => oldIndex
       in
-        set i newIndex
+        if newIndex = oldIndex
+        then
+          set i oldIndex
+        else
+          let val length = List.length (inits v revealIndex)
+          in
+            set i (max 0 (min (length - 1) newIndex))
+          end
       end
     }>
       <dyn signal={
