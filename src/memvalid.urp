@@ -1,5 +1,6 @@
-allow url //localhost:8086/style.css
+allow url /style.css
 rewrite style Css/*
+file /style.css ../css/style.css
 database dbname=memvalid_ur user=postgres
 sql memvalid.sql
 

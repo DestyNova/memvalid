@@ -99,7 +99,7 @@ fun main () =
 
   return <xml>
     <head>
-      <link rel="stylesheet" type="text/css" href="//localhost:8086/style.css"/>
+      <link rel="stylesheet" type="text/css" href="/style.css"/>
     </head>
     <body onkeydown={fn k =>
       oldIndex <- get i;
