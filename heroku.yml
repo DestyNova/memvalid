@@ -3,5 +3,4 @@ build:
     web: ci/build.docker
 
 run:
-  docker:
-    web: ci/run.docker
+  web: ci/run.docker
