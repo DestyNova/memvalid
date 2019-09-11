@@ -26,4 +26,6 @@ ENV PATH=${COMPILER}/bin:${PATH}
 
 # build app
 RUN mkdir -p /app
-RUN urweb memvalid -dbms sqlite -db db.sqlite -output memvalid.exe
+ADD ../src .
+RUN cd src && \
+    urweb memvalid -dbms sqlite -db db.sqlite -output ../memvalid.exe
