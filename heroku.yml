@@ -1,6 +1,6 @@
 build:
   docker:
-    builder: ci/builder.docker
+    image: ci/builder.docker
     web: ci/build.docker
 
 run:
