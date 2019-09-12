@@ -1,7 +1,6 @@
 build:
   docker:
-    image: ci/Dockerfile.builder
-    web: ci/build.docker
+    web: Dockerfile.build
 
 run:
-  web: ci/run.docker
+  web: /app/memvalid.exe -q -k -t $((2 * $(nproc)))
