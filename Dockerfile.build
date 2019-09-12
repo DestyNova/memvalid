@@ -1,4 +1,4 @@
-FROM urweb:latest
+FROM destynova/urweb:latest
 
 # build app
 ADD src /app/src
