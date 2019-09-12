@@ -3,8 +3,6 @@ FROM destynova/urweb:20190907
 # build app
 ADD src /app/src
 ADD css /app/css
-ADD test-build.sh /app/test.sh
-ADD test-fast.sh /app/test-fast.sh
 WORKDIR /app/src
 
 RUN urweb memvalid -dbms sqlite -db db.sqlite -output /app/memvalid.exe
