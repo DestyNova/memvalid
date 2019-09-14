@@ -3,6 +3,10 @@
   background: powderblue
 }
 
+.editBox {
+  width: 100%
+}
+
 .seekButton {
   border: thin solid black;
   background: blue

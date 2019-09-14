@@ -1,23 +1,6 @@
 open Css
 open Bootstrap4
 
-(*
-This is easy in SML:
-
-let val ws = String.tokens Char.isSpace "what the pox"
-in
-  String.concat (List.map (fn(s) => String.str(String.sub(s, 0)) ^ " ") ws)
-end
-
-=> val it = "w t p " : string
-
-Why are these basic string functions missing in the Urweb standard lib?
-There isn't even a straightforward way to go from string to list of chars!
-I'm guessing this is because it needs to work in both the backend and in JS?
-So they'd need to be re-implemented in straight Ur. Maybe that already exists.
-Anyway, I'll do it and maybe share it as a separate lib later.
-*)
-
 fun nextToken (txt: list char) (p: char -> bool) : (string * list char) =
   let
     fun nextToken' acc txt =
@@ -115,6 +98,7 @@ fun main () =
   return <xml>
     <head>
       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="/style.css" />
     </head>
 
     <body onkeydown={fn k =>
@@ -139,7 +123,7 @@ fun main () =
               return <xml>
                 {if editMode
                   then
-                    <xml><ctextarea source={txtSrc}/></xml>
+                    <xml><ctextarea source={txtSrc} class={editBox} style="width: 100%" /></xml>
                 else
                   <xml/>}
               </xml>
@@ -175,13 +159,13 @@ fun main () =
         </div>
 
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-md-6">
             <button class="btn btn-lg btn-block btn-success" Onclick={fn _ => seek (-1) txtSrc i}>
               <h3>←</h3>
             </button>
           </div>
 
-          <div class="col-sm-6">
+          <div class="col-md-6">
             <button class="btn btn-lg btn-block btn-success" Onclick={fn _ => seek 1 txtSrc i}>
               <h3>→</h3>
             </button>
