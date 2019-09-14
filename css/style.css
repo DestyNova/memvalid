@@ -3,6 +3,11 @@
   background: powderblue
 }
 
+.seekButton {
+  border: thin solid black;
+  background: blue
+}
+
 .hiddenWord { color: green }
 
 .revealedWord { color: red }
