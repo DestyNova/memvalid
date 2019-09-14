@@ -2,6 +2,8 @@
 
 Tool for either memorising text by checking that you can reconstruct what you've read just by the first letter of each word.
 
+It was built mostly as an exercise for learning more about the mysterious [Ur/web programming language](http://www.impredicative.com/ur/).
+
 ## TODO
 
 * [X] Single textbox to paste stuff into
