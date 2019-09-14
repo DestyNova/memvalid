@@ -171,15 +171,15 @@ fun main () =
             </button>
           </div>
         </div>
-      </div>
 
-      <div class="row" style="padding-top: 20px">
-        <div class="col text-center">
-          <a href="https://github.com/DestyNova/memvalid">
-            <span class="badge bg-dark">
-              Source code
-            </span>
-          </a>
+        <div class="row" style="padding-top: 20px">
+          <div class="col text-center">
+            <a href="https://github.com/DestyNova/memvalid">
+              <span class="badge bg-dark">
+                Source code
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </body>
