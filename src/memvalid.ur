@@ -114,7 +114,7 @@ fun main () =
       end
     }>
 
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
           <div class="col">
             <dyn signal={
@@ -173,7 +173,7 @@ fun main () =
         </div>
 
         <div class="row" style="padding-top: 20px">
-          <div class="col text-center">
+          <div class="col-sm-12 text-center">
             <a href="https://github.com/DestyNova/memvalid">
               <span class="badge bg-dark">
                 Source code
