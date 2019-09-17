@@ -15,3 +15,7 @@
 .hiddenWord { color: green }
 
 .revealedWord { color: red }
+
+body {
+  font-size: 20px;
+}

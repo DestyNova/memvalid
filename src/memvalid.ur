@@ -159,13 +159,19 @@ fun main () =
         </div>
 
         <div class="row">
-          <div class="col-md-6">
-            <button class="btn btn-lg btn-block btn-success" Onclick={fn _ => seek (-1) txtSrc i}>
+          <div class="col-md-4">
+            <button class="btn btn-lg btn-block btn-warning" Onclick={fn _ => seek (-9999) txtSrc i}>
+              <h3>⇤</h3>
+            </button>
+          </div>
+
+          <div class="col-md-4">
+            <button class="btn btn-lg btn-block btn-primary" Onclick={fn _ => seek (-1) txtSrc i}>
               <h3>←</h3>
             </button>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-4">
             <button class="btn btn-lg btn-block btn-success" Onclick={fn _ => seek 1 txtSrc i}>
               <h3>→</h3>
             </button>
