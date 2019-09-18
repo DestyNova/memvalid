@@ -4,6 +4,15 @@ Tool for either memorising text by checking that you can reconstruct what you've
 
 It was built mostly as an exercise for learning more about the mysterious [Ur/web programming language](http://www.impredicative.com/ur/).
 
+[Try it here](https://memvalid.herokuapp.com).
+
+## Usage
+
+1. Find some text you want to test yourself on.
+1. Paste the text into the edit box.
+1. Switch edit mode off.
+1. Step forward through the text, trying to guess what each word will be from the first letter, before revealing it.
+
 ## TODO
 
 * [X] Single textbox to paste stuff into
