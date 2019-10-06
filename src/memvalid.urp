@@ -7,7 +7,7 @@ rewrite url Memvalid/main
 rewrite style Bootstrap4/glyphicon* fa [-]
 rewrite style Bootstrap4/bs_*
 rewrite style Bootstrap4/* [-]
-file /style.css ../css/style.css
+file /style.css ../assets/style.css
 database dbname=memvalid_ur user=postgres
 sql memvalid.sql
 
