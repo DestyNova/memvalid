@@ -1,4 +1,4 @@
-FROM destynova/urweb:20190907
+FROM destynova/urweb:20210919
 
 # build app
 ADD src /app/src
