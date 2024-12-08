@@ -1,6 +1,0 @@
-build:
-  docker:
-    web: Dockerfile.build
-
-run:
-  web: /app/memvalid.exe -q -k -t $((2 * $(nproc))) -p $PORT
