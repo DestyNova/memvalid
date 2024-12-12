@@ -36,7 +36,7 @@ fun tokens (txt: list char) (p: char -> bool) : list string =
         (w, []) => w :: acc
         | (w, xs) => tokens' (w :: acc) xs p
   in
-    List.rev (tokens' [] txt p)
+    List.filter (fn x => x <> "" && x <> " ") (List.rev (tokens' [] txt p))
   end
 
 fun nonAlpha c =
