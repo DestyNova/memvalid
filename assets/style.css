@@ -12,9 +12,9 @@
   background: blue
 }
 
-.hiddenWord { color: green }
+.hiddenWord { color: grey; font-family: monospace }
 
-.revealedWord { color: red }
+.revealedWord { color: blue; font-family: monospace }
 
 body {
   font-size: 1.25rem

@@ -1,6 +1,21 @@
 open Css
 open Bootstrap4
 
+fun replicate a n =
+    let
+        fun replicate' n acc =
+            if n <= 0 then
+                acc
+            else
+                replicate' (n-1) (a :: acc)
+    in
+        replicate' n []
+    end
+fun implode (cs : list char) : string =
+  case cs of
+    [] => ""
+  | c :: rest => (String.str c) ^ (implode rest)
+
 fun nextToken (txt: list char) (p: char -> bool) : (string * list char) =
   let
     fun nextToken' acc txt =
@@ -52,14 +67,18 @@ fun inits' acc (xs: list string) (i: int) =
         val wordLength = String.length w
         val word =
                    if i = 0 || w = ""
-                   then <xml><span class="text-primary">{[w]}</span></xml>
+                   then <xml><span class="revealedWord">{[w]}</span></xml>
                    else
-                    let val lastChar = String.sub w (wordLength - 1)
+                    let
+                      val lastChar = String.sub w (wordLength - 1)
+                      val endsWithPunctuation = String.length w > 1 && nonAlpha lastChar
+                      val tailLength = if endsWithPunctuation then (wordLength - 2) else wordLength - 1
+                      val tail = replicate #"-" tailLength
                     in
-                      <xml><span class="text-muted">
+                      <xml><span class="hiddenWord">
                       {[
-                        (String.str (String.sub w 0)) ^
-                          if String.length w > 1 && nonAlpha lastChar
+                        (String.str (String.sub w 0)) ^ (implode tail) ^
+                          if endsWithPunctuation
                           then String.str lastChar
                           else ""
                       ]}
