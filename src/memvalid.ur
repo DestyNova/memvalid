@@ -73,7 +73,7 @@ fun inits' acc (xs: list string) (i: int) =
                       val lastChar = String.sub w (wordLength - 1)
                       val endsWithPunctuation = String.length w > 1 && nonAlpha lastChar
                       val tailLength = if endsWithPunctuation then (wordLength - 2) else wordLength - 1
-                      val tail = replicate #"-" tailLength
+                      val tail = replicate #"_" tailLength
                     in
                       <xml><span class="hiddenWord">
                       {[
