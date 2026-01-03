@@ -7,10 +7,11 @@ fun replicate a n =
             if n <= 0 then
                 acc
             else
-                replicate' (n-1) (a :: acc)
+                replicate' (n-1) (String.append a acc)
     in
-        replicate' n []
+        replicate' n ""
     end
+
 fun implode (cs : list char) : string =
   case cs of
     [] => ""
@@ -73,11 +74,11 @@ fun inits' acc (xs: list string) (i: int) =
                       val lastChar = String.sub w (wordLength - 1)
                       val endsWithPunctuation = String.length w > 1 && nonAlpha lastChar
                       val tailLength = if endsWithPunctuation then (wordLength - 2) else wordLength - 1
-                      val tail = replicate #"_" tailLength
+                      val tail = replicate "‑" tailLength
                     in
                       <xml><span class="hiddenWord">
                       {[
-                        (String.str (String.sub w 0)) ^ (implode tail) ^
+                        (String.str (String.sub w 0)) ^ tail ^
                           if endsWithPunctuation
                           then String.str lastChar
                           else ""
