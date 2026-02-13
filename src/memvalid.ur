@@ -125,6 +125,8 @@ fun main () =
 
     <body onkeydown={fn k =>
       editing <- get edit;
+      oldI <- get i;
+      set i (if editing then -1 else oldI);
 
       let val difference =
         case (editing, k.KeyCode) of
